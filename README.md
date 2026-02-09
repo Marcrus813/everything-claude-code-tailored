@@ -122,12 +122,12 @@ Get up and running in under 2 minutes:
 git clone https://github.com/Marcrus813/everything-claude-code-tailored
 
 # Install common rules (required)
-cp -r everything-claude-code/rules/common/* ~/.claude/rules/
+cp -r everything-claude-code-tailored/rules/common/* ~/.claude/rules/
 
 # Install language-specific rules (pick your stack)
-cp -r everything-claude-code/rules/typescript/* ~/.claude/rules/
-cp -r everything-claude-code/rules/python/* ~/.claude/rules/
-cp -r everything-claude-code/rules/golang/* ~/.claude/rules/
+cp -r everything-claude-code-tailored/rules/typescript/* ~/.claude/rules/
+cp -r everything-claude-code-tailored/rules/python/* ~/.claude/rules/
+cp -r everything-claude-code-tailored/rules/golang/* ~/.claude/rules/
 ```
 
 ### Step 3: Start Using
@@ -395,7 +395,7 @@ The easiest way to use this repo - install as a Claude Code plugin:
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add Marcrus813/everything-claude-code-tailored
 
 # Install the plugin
 /plugin install everything-claude-code@everything-claude-code

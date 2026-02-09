@@ -3,6 +3,7 @@
 You are Claude Code. I use specialized agents and skills for complex tasks.
 
 **Key Principles:**
+
 1. **Agent-First**: Delegate to specialized agents for complex work
 2. **Parallel Execution**: Use Task tool with multiple agents when possible
 3. **Plan Before Execute**: Use Plan Mode for complex operations
@@ -13,18 +14,46 @@ You are Claude Code. I use specialized agents and skills for complex tasks.
 
 # Modular Rules
 
-Detailed guidelines are in `~/.claude/rules/`:
+Detailed guidelines are organized in `~/.claude/rules/`:
 
-| Rule File | Contents |
-|-----------|----------|
-| security.md | Security checks, secret management |
-| coding-style.md | Immutability, file organization, error handling |
-| testing.md | TDD workflow, 80% coverage requirement |
-| git-workflow.md | Commit format, PR workflow |
-| agents.md | Agent orchestration, when to use which agent |
-| patterns.md | API response, repository patterns |
-| performance.md | Model selection, context management |
-| hooks.md | Hooks System |
+**Common (all languages):**
+
+- `common/security.md` - Security checks, secret management
+- `common/git-workflow.md` - Commit format, PR workflow
+- `common/agents.md` - Agent orchestration, when to use which agent
+- `common/performance.md` - Model selection, context management
+
+**Go-specific:**
+
+- `golang/coding-style.md` - Go formatting, design principles, error handling
+- `golang/patterns.md` - Idiomatic Go patterns, functional options, DI
+- `golang/testing.md` - Table-driven tests, race detection, coverage
+- `golang/hooks.md` - gofmt, go vet, staticcheck automation
+- `golang/security.md` - Secret management, context timeouts, gosec
+
+**TypeScript-specific:**
+
+- `typescript/coding-style.md` - TS/JS style, immutability, file organization
+- `typescript/patterns.md` - React patterns, API design
+- `typescript/testing.md` - Jest/Vitest, testing patterns
+- `typescript/hooks.md` - ESLint, Prettier automation
+- `typescript/security.md` - XSS, injection prevention, secure patterns
+
+**Python-specific:**
+
+- `python/coding-style.md` - PEP 8, type hints, Pythonic idioms
+- `python/patterns.md` - Python patterns, best practices
+- `python/testing.md` - pytest, fixtures, parametrization
+- `python/hooks.md` - black, ruff, mypy automation
+- `python/security.md` - Input validation, secure coding
+
+**Solidity-specific:**
+
+- `solidity/coding-style.md` - Solidity style, gas optimization, contract size
+- `solidity/patterns.md` - OpenZeppelin patterns, upgradeability, reentrancy protection
+- `solidity/testing.md` - Foundry/Hardhat, fuzz tests, invariant tests, 90% coverage
+- `solidity/hooks.md` - Pre-commit test hooks
+- `solidity/security.md` - Critical vulnerabilities, static analysis, audit checklist
 
 ---
 
@@ -32,40 +61,44 @@ Detailed guidelines are in `~/.claude/rules/`:
 
 Located in `~/.claude/agents/`:
 
-| Agent | Purpose |
-|-------|---------|
-| planner | Feature implementation planning |
-| architect | System design and architecture |
-| tdd-guide | Test-driven development |
-| code-reviewer | Code review for quality/security |
-| security-reviewer | Security vulnerability analysis |
-| build-error-resolver | Build error resolution |
-| e2e-runner | Playwright E2E testing |
-| refactor-cleaner | Dead code cleanup |
-| doc-updater | Documentation updates |
+| Agent                | Purpose                          |
+| -------------------- | -------------------------------- |
+| planner              | Feature implementation planning  |
+| architect            | System design and architecture   |
+| tdd-guide            | Test-driven development          |
+| code-reviewer        | Code review for quality/security |
+| security-reviewer    | Security vulnerability analysis  |
+| build-error-resolver | Build error resolution           |
+| e2e-runner           | Playwright E2E testing           |
+| refactor-cleaner     | Dead code cleanup                |
+| doc-updater          | Documentation updates            |
 
 ---
 
 # Personal Preferences
 
 ## Privacy
+
 - Always redact logs; never paste secrets (API keys/tokens/passwords/JWTs)
 - Review output before sharing - remove any sensitive data
 
 ## Code Style
-- No emojis in code, comments, or documentation
+
+- No emojis in code, comments, acceptable in demonstration documentations.
 - Prefer immutability - never mutate objects or arrays
 - Many small files over few large files
 - 200-400 lines typical, 800 max per file
 
 ## Git
+
 - Conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `test:`
 - Always test locally before committing
 - Small, focused commits
 
 ## Testing
+
 - TDD: Write tests first
-- 80% minimum coverage
+- 80% minimum coverage (90% for Solidity)
 - Unit + integration + E2E for critical flows
 
 ## Standard Workflow
@@ -95,7 +128,8 @@ For terminal file access, I use Nano as my primary editor, for other use cases, 
 # Success Metrics
 
 You are successful when:
-- All tests pass (80%+ coverage)
+
+- All tests pass (80%+ coverage, 90%+ for Solidity)
 - No security vulnerabilities
 - Code is readable and maintainable
 - User requirements are met
