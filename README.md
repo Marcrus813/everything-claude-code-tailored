@@ -158,7 +158,7 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Add marketplace
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add Marcrus813/everything-claude-code-tailored
 
 # Install plugin
 /plugin install everything-claude-code@everything-claude-code
@@ -170,8 +170,7 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Clone the repo first
-git clone https://github.com/affaan-m/everything-claude-code.git
-cd everything-claude-code
+git clone https://github.com/Marcrus813/everything-claude-code-tailored
 
 # Install dependencies (pick your package manager)
 npm install        # or: pnpm install | yarn install | bun install
@@ -606,7 +605,7 @@ This gives you instant access to all commands, agents, skills, and hooks.
 >
 > ```bash
 > # Clone the repo first
-> git clone https://github.com/affaan-m/everything-claude-code.git
+> git clone https://github.com/Marcrus813/everything-claude-code-tailored
 >
 > # Option A: User-level rules (applies to all projects)
 > mkdir -p ~/.claude/rules
@@ -630,7 +629,7 @@ If you prefer manual control over what's installed:
 
 ```bash
 # Clone the repo
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone https://github.com/Marcrus813/everything-claude-code-tailored
 
 # Copy agents to your Claude config
 cp everything-claude-code/agents/*.md ~/.claude/agents/
