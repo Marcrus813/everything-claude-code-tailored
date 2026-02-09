@@ -454,13 +454,11 @@ cd everything-claude-code-tailored
 # Install dependencies (pick your package manager)
 npm install        # or: pnpm install | yarn install | bun install
 
-# Plugin install path: copy only ECC rules into an ECC-owned namespace
-mkdir -p ~/.claude/rules/ecc
-cp -R rules/common ~/.claude/rules/ecc/
-cp -R rules/typescript ~/.claude/rules/ecc/
-
-# Fully manual ECC install path (use this instead of /plugin install)
-# ./install.sh --profile full
+# macOS/Linux
+./install.sh typescript    # or python or golang or swift or php or solidity
+# ./install.sh typescript python golang swift php solidity
+# ./install.sh --target cursor typescript
+# ./install.sh --target antigravity typescript
 ```
 
 ```powershell
@@ -1007,7 +1005,7 @@ The easiest way to use this repo - install as a Claude Code plugin:
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add https://github.com/affaan-m/ECC
+/plugin marketplace add Marcrus813/everything-claude-code-tailored
 
 # Install the plugin
 /plugin install ecc@ecc

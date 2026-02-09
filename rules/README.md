@@ -26,7 +26,8 @@ rules/
 ├── swift/           # Swift specific
 ├── php/             # PHP specific
 ├── ruby/            # Ruby / Rails specific
-└── arkts/           # HarmonyOS / ArkTS specific
+├── arkts/           # HarmonyOS / ArkTS specific
+└── solidity/        # Solidity/Smart Contract specific
 ```
 
 - **common/** contains universal principles — no language-specific code examples.
@@ -50,9 +51,10 @@ rules/
 ./install.sh php
 ./install.sh ruby
 ./install.sh arkts
+./install.sh solidity
 
 # Install multiple languages at once
-./install.sh typescript python
+./install.sh typescript python solidity
 ```
 
 ### Option 2: Manual Installation
@@ -87,6 +89,7 @@ cp -r rules/swift ~/.claude/rules/ecc/
 cp -r rules/php ~/.claude/rules/ecc/
 cp -r rules/ruby ~/.claude/rules/ecc/
 cp -r rules/arkts ~/.claude/rules/ecc/
+cp -r rules/solidity ~/.claude/rules/ecc/
 
 # Attention ! ! ! Configure according to your actual project requirements; the configuration here is for reference only.
 ```
