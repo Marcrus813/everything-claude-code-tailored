@@ -418,7 +418,7 @@ npx ecc install --profile minimal --target claude --with capability:machine-lear
 
 ```bash
 # Add marketplace
-/plugin marketplace add https://github.com/affaan-m/ECC
+/plugin marketplace add Marcrus813/everything-claude-code-tailored
 
 # Install plugin
 /plugin install ecc@ecc
@@ -448,8 +448,8 @@ This is intentional. Anthropic marketplace/plugin installs are keyed by a canoni
 
 ```bash
 # Clone the repo first
-git clone https://github.com/affaan-m/ECC.git
-cd ECC
+git clone https://github.com/Marcrus813/everything-claude-code-tailored
+cd everything-claude-code-tailored
 
 # Install dependencies (pick your package manager)
 npm install        # or: pnpm install | yarn install | bun install
@@ -1037,8 +1037,8 @@ This gives you instant access to all commands, agents, skills, and hooks.
 >
 > ```bash
 > # Clone the repo first
-> git clone https://github.com/affaan-m/ECC.git
-> cd ECC
+> git clone https://github.com/Marcrus813/everything-claude-code-tailored
+> cd everything-claude-code-tailored
 >
 > # Option A: User-level rules (applies to all projects)
 > mkdir -p ~/.claude/rules/ecc
@@ -1062,8 +1062,8 @@ If you prefer manual control over what's installed:
 
 ```bash
 # Clone the repo
-git clone https://github.com/affaan-m/ECC.git
-cd ECC
+git clone https://github.com/Marcrus813/everything-claude-code-tailored
+cd everything-claude-code-tailored
 
 # Copy agents to your Claude config
 cp agents/*.md ~/.claude/agents/
