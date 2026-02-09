@@ -176,8 +176,8 @@ git clone https://github.com/Marcrus813/everything-claude-code-tailored
 npm install        # or: pnpm install | yarn install | bun install
 
 # macOS/Linux
-./install.sh typescript    # or python or golang or swift or php
-# ./install.sh typescript python golang swift php
+./install.sh typescript    # or python or golang or swift or php or solidity
+# ./install.sh typescript python golang swift php solidity
 # ./install.sh --target cursor typescript
 # ./install.sh --target antigravity typescript
 ```
@@ -575,7 +575,7 @@ The easiest way to use this repo - install as a Claude Code plugin:
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add Marcrus813/everything-claude-code-tailored
 
 # Install the plugin
 /plugin install everything-claude-code@everything-claude-code

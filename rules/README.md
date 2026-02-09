@@ -18,7 +18,8 @@ rules/
 ├── python/          # Python specific
 ├── golang/          # Go specific
 ├── swift/           # Swift specific
-└── php/             # PHP specific
+├── php/             # PHP specific
+└── solidity/        # Solidity/Smart Contract specific
 ```
 
 - **common/** contains universal principles — no language-specific code examples.
@@ -35,9 +36,10 @@ rules/
 ./install.sh golang
 ./install.sh swift
 ./install.sh php
+./install.sh solidity
 
 # Install multiple languages at once
-./install.sh typescript python
+./install.sh typescript python solidity
 ```
 
 ### Option 2: Manual Installation
@@ -58,6 +60,7 @@ cp -r rules/python ~/.claude/rules/python
 cp -r rules/golang ~/.claude/rules/golang
 cp -r rules/swift ~/.claude/rules/swift
 cp -r rules/php ~/.claude/rules/php
+cp -r rules/solidity ~/.claude/rules/solidity
 
 # Attention ! ! ! Configure according to your actual project requirements; the configuration here is for reference only.
 ```
