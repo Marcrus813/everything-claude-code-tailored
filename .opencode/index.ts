@@ -10,13 +10,13 @@
  *
  * Option 1: Install via npm
  * ```bash
- * npm install ecc-universal
+ * npm install @marcrus813/ecc-universal
  * ```
  *
  * Then add to your opencode.json:
  * ```json
  * {
- *   "plugin": ["ecc-universal"]
+ *   "plugin": ["@marcrus813/ecc-universal"]
  * }
  * ```
  *
@@ -45,7 +45,7 @@ export const VERSION = "1.6.0"
 
 // Plugin metadata
 export const metadata = {
-  name: "ecc-universal",
+  name: "@marcrus813/ecc-universal",
   version: VERSION,
   description: "ECC plugin for OpenCode",
   author: "affaan-m",

@@ -21,19 +21,15 @@ Choose the method that matches your workflow below.
 
 ### Option 1: npm Package
 
-```bash
-npm install ecc-universal
-```
-
 Add to your `opencode.json`:
 
 ```json
 {
-  "plugin": ["ecc-universal"]
+  "plugin": ["@marcrus813/ecc-universal"]
 }
 ```
 
-This loads the ECC OpenCode plugin module from npm:
+OpenCode resolves this itself — it detects the bare npm specifier in the `plugin` array and auto-installs/caches the package via its own Bun-managed installer at startup. This loads the ECC OpenCode plugin module:
 - hook/event integrations
 - bundled custom tools exported by the plugin
 
@@ -41,9 +37,10 @@ It does **not** auto-register the full ECC command/agent/instruction catalog in 
 - run OpenCode inside this repository, or
 - copy the relevant `.opencode/commands/`, `.opencode/prompts/`, `.opencode/instructions/`, and the `instructions`, `agent`, and `command` config entries into your own project
 
-After installation, the `ecc-install` CLI is also available:
+Separately, `npm install -g @marcrus813/ecc-universal` gets the package's CLI binaries (`ecc`, `ecc-install`) onto your PATH — it is **not** required for the OpenCode plugin above to load; OpenCode fetches that itself:
 
 ```bash
+npm install -g @marcrus813/ecc-universal
 npx ecc-install typescript
 ```
 
@@ -69,6 +66,19 @@ node scripts/install-apply.js --target opencode --profile full
 Without `.opencode/dist/index.js`, OpenCode will detect the slash commands
 but silently skip plugin hooks and tools. The installer now fails fast with
 a pointer to this command if the build step is missing.
+
+### Option 3: Global Setup (npm + manual copy, personal use)
+
+For running the full ECC OpenCode experience (agents, commands, all rules, all skills) on a machine where this repo isn't cloned:
+
+1. OpenCode resolves `.opencode/opencode.global.json`'s `"plugin": ["@marcrus813/ecc-universal"]` entry itself, via its own Bun-managed auto-install/cache — no manual npm step is required for the plugin to load. (`npm install -g @marcrus813/ecc-universal` is only needed separately if you also want the `ecc`/`ecc-install` CLI binaries on PATH.)
+2. `mkdir -p ~/.config/opencode`
+3. Copy `.opencode/opencode.global.json` → `~/.config/opencode/opencode.json` (renamed at copy time — OpenCode only auto-discovers the exact filename `opencode.json`, so the source template can keep a distinct name in the repo)
+4. Copy `.opencode/commands/`, `.opencode/prompts/`, `.opencode/instructions/` → matching subdirs under `~/.config/opencode/`
+5. Copy the repo-root `rules/` and `skills/` directories → `~/.config/opencode/rules/` and `~/.config/opencode/skills/`
+6. Re-run steps 3-5 whenever the fork is updated (`git pull`) or after publishing a new npm version, to keep the global setup in sync.
+
+`.opencode/opencode.global.json` is a separate, purpose-built template — it is never auto-discovered on its own and is kept alongside (not instead of) the repo's own `.opencode/opencode.json`, which remains the unmodified config used when running `opencode` directly inside this repository (Option 2).
 
 ## Features
 

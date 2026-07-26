@@ -1,5 +1,5 @@
 {
-  "name": "ecc-universal",
+  "name": "@marcrus813/ecc-universal",
   "version": "2.0.0",
   "description": "ECC plugin for OpenCode - agents, commands, hooks, and skills",
   "main": "dist/index.js",
