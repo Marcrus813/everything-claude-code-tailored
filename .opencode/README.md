@@ -25,7 +25,7 @@ Add to your `opencode.json`:
 
 ```json
 {
-  "plugin": ["@marcrus813/ecc-universal"]
+  "plugin": ["@cocoapuffs813/ecc-universal"]
 }
 ```
 
@@ -37,10 +37,10 @@ It does **not** auto-register the full ECC command/agent/instruction catalog in 
 - run OpenCode inside this repository, or
 - copy the relevant `.opencode/commands/`, `.opencode/prompts/`, `.opencode/instructions/`, and the `instructions`, `agent`, and `command` config entries into your own project
 
-Separately, `npm install -g @marcrus813/ecc-universal` gets the package's CLI binaries (`ecc`, `ecc-install`) onto your PATH — it is **not** required for the OpenCode plugin above to load; OpenCode fetches that itself:
+Separately, `npm install -g @cocoapuffs813/ecc-universal` gets the package's CLI binaries (`ecc`, `ecc-install`) onto your PATH — it is **not** required for the OpenCode plugin above to load; OpenCode fetches that itself:
 
 ```bash
-npm install -g @marcrus813/ecc-universal
+npm install -g @cocoapuffs813/ecc-universal
 npx ecc-install typescript
 ```
 
@@ -71,7 +71,7 @@ a pointer to this command if the build step is missing.
 
 For running the full ECC OpenCode experience (agents, commands, all rules, all skills) on a machine where this repo isn't cloned:
 
-1. OpenCode resolves `.opencode/opencode.global.json`'s `"plugin": ["@marcrus813/ecc-universal"]` entry itself, via its own Bun-managed auto-install/cache — no manual npm step is required for the plugin to load. (`npm install -g @marcrus813/ecc-universal` is only needed separately if you also want the `ecc`/`ecc-install` CLI binaries on PATH.)
+1. OpenCode resolves `.opencode/opencode.global.json`'s `"plugin": ["@cocoapuffs813/ecc-universal"]` entry itself, via its own Bun-managed auto-install/cache — no manual npm step is required for the plugin to load. (`npm install -g @cocoapuffs813/ecc-universal` is only needed separately if you also want the `ecc`/`ecc-install` CLI binaries on PATH.)
 2. `mkdir -p ~/.config/opencode`
 3. Copy `.opencode/opencode.global.json` → `~/.config/opencode/opencode.json` (renamed at copy time — OpenCode only auto-discovers the exact filename `opencode.json`, so the source template can keep a distinct name in the repo)
 4. Copy `.opencode/commands/`, `.opencode/prompts/`, `.opencode/instructions/` → matching subdirs under `~/.config/opencode/`

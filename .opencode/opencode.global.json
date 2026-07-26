@@ -11,7 +11,7 @@
     "skills/*/SKILL.md"
   ],
   "plugin": [
-    "@marcrus813/ecc-universal"
+    "@cocoapuffs813/ecc-universal"
   ],
   "skills": {
     "paths": [
