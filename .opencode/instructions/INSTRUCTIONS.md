@@ -301,7 +301,7 @@ interface Repository<T> {
 
 ## OpenCode-Specific Notes
 
-Since OpenCode does not support hooks, the following actions that were automated in Claude Code must be done manually:
+If the ECC plugin runtime is unavailable (not installed/loaded), perform these checks manually. Otherwise, the plugin's hooks and custom tools handle part of this automatically.
 
 ### After Writing/Editing Code
 - Run `prettier --write <file>` to format JS/TS files
