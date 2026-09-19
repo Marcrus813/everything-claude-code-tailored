@@ -80,6 +80,8 @@ Use parallel execution for independent operations — launch multiple agents sim
 
 **If security issue found:** STOP → use security-reviewer agent → fix CRITICAL issues → rotate exposed secrets → review codebase for similar issues.
 
+**Privacy:** Always redact logs before sharing; never paste secrets (API keys, tokens, passwords, JWTs). Review output before sharing and strip any sensitive data.
+
 ## Coding Style
 
 **Immutability (CRITICAL):** Always create new objects, never mutate. Return new copies with changes applied.
@@ -95,6 +97,7 @@ Use parallel execution for independent operations — launch multiple agents sim
 - No deep nesting (>4 levels)
 - Proper error handling, no hardcoded values
 - Readable, well-named identifiers
+- No emojis in code or comments (acceptable in demonstration documentation only)
 
 ## Testing Requirements
 
@@ -123,6 +126,8 @@ Troubleshoot failures: check test isolation → verify mocks → fix implementat
    - If the current task already produces the relevant docs or code comments, do not duplicate the same information elsewhere
    - If there is no obvious project doc location, ask before creating a new top-level file
 5. **Commit** — Conventional commits format, comprehensive PR summaries
+
+**Plan artifact convention:** For multi-step work, write the plan as a checklist to `todo-agents.md`, check in with the user to verify it before starting, then mark items complete as you go. Give a high-level explanation of changes at each step. Favor the simplest, smallest-diff change over massive or complex ones. When done, append a review section to `todo-agents.md` summarizing the changes and any other relevant information.
 
 ## Workflow Surface Policy
 
@@ -157,7 +162,10 @@ agents/          — 68 specialized subagents
 skills/          — 292 workflow skills and domain knowledge
 commands/        — 94 slash commands
 hooks/           — Trigger-based automations
-rules/           — Always-follow guidelines (common + per-language)
+rules/           — Always-follow guidelines: rules/common/ (security, git-workflow, agents, performance,
+                   coding-style, patterns, hooks, testing, code-review, development-workflow) plus one
+                   directory per language (coding-style, patterns, testing, hooks, security). See
+                   rules/README.md for the full index and install instructions.
 scripts/         — Cross-platform Node.js utilities
 mcp-configs/     — 14 MCP server configurations
 tests/           — Test suite
