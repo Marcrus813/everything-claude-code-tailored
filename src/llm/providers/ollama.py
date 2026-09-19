@@ -11,7 +11,13 @@ from llm.core.interface import (
     LLMProvider,
     RateLimitError,
 )
-from llm.core.types import LLMInput, LLMOutput, Message, ModelInfo, ProviderType, ToolCall
+from llm.core.types import (
+    LLMInput,
+    LLMOutput,
+    ModelInfo,
+    ProviderType,
+    ToolCall,
+)
 
 
 class OllamaProvider(LLMProvider):
@@ -52,8 +58,8 @@ class OllamaProvider(LLMProvider):
         ]
 
     def generate(self, input: LLMInput) -> LLMOutput:
-        import urllib.request
         import json
+        import urllib.request
 
         try:
             url = f"{self.base_url}/api/chat"
@@ -64,8 +70,13 @@ class OllamaProvider(LLMProvider):
                 "messages": [msg.to_dict() for msg in input.messages],
                 "stream": False,
             }
+            options: dict[str, Any] = {}
             if input.temperature != 1.0:
-                payload["options"] = {"temperature": input.temperature}
+                options["temperature"] = input.temperature
+            if input.max_tokens is not None:
+                options["num_predict"] = input.max_tokens
+            if options:
+                payload["options"] = options
 
             data = json.dumps(payload).encode("utf-8")
             req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})

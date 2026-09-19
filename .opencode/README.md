@@ -41,7 +41,7 @@ Separately, `npm install -g @cocoapuffs813/ecc-universal` gets the package's CLI
 
 ```bash
 npm install -g @cocoapuffs813/ecc-universal
-npx ecc-install typescript
+npx ecc-universal install typescript
 ```
 
 ### Option 2: Direct Use
@@ -234,8 +234,6 @@ Full configuration in `opencode.json`:
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "anthropic/claude-sonnet-4-5",
-  "small_model": "anthropic/claude-haiku-4-5",
   "plugin": ["./plugins"],
   "instructions": [
     "skills/tdd-workflow/SKILL.md",
@@ -245,6 +243,10 @@ Full configuration in `opencode.json`:
   "command": { /* 24 commands */ }
 }
 ```
+
+The reference config intentionally leaves model selection to OpenCode. Connect a
+provider and select a model in OpenCode; ECC's primary agent uses that global
+selection, and its subagents inherit the invoking primary agent's model.
 
 ## License
 

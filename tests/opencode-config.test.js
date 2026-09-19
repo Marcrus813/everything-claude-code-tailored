@@ -132,6 +132,31 @@ for (const { label, config } of configs) {
   record(test(`[${label}] command markdown frontmatter agent ids resolve to a registered opencode agent`, () => checkCommandAgentIds(label, config)));
 }
 
+// The shared reference config (opencode.json) must inherit the user's selected
+// OpenCode provider instead of pinning a model. opencode.global.json is a
+// personal global setup and may pin its own model, so this check is scoped to
+// opencode.json only.
+record(
+  test('opencode.json model selection inherits the user configured OpenCode provider', () => {
+    const config = configs.find(entry => entry.label === 'opencode.json').config;
+
+    assert.ok(!Object.hasOwn(config, 'model'), 'Root config must not pin a provider-specific model');
+    assert.ok(!Object.hasOwn(config, 'small_model'), 'Root config must not pin a provider-specific small model');
+
+    assert.ok(
+      config.agent &&
+        typeof config.agent === 'object' &&
+        !Array.isArray(config.agent) &&
+        Object.keys(config.agent).length > 0,
+      'Reference config must define registered agents'
+    );
+
+    for (const [agentId, agent] of Object.entries(config.agent)) {
+      assert.ok(!Object.hasOwn(agent, 'model'), `Agent "${agentId}" must inherit the selected OpenCode model`);
+    }
+  })
+);
+
 record(
   test('opencode.global.json instructions globs each match at least one real file', () => {
     const globalConfig = configs.find(entry => entry.label === 'opencode.global.json').config;
