@@ -15,11 +15,11 @@ echo "Running tests before commit..."
 
 # Run tests
 forge test || {
-    echo "❌ Tests failed. Commit aborted."
+    echo "FAIL: Tests failed. Commit aborted."
     exit 1
 }
 
-echo "✅ All tests passed. Proceeding with commit."
+echo "PASS: All tests passed. Proceeding with commit."
 ```
 
 Make the hook executable:
@@ -69,10 +69,10 @@ jobs:
           forge coverage --report summary | tee coverage.txt
           COVERAGE=$(grep "Total" coverage.txt | grep -oP '\d+\.\d+' | head -1)
           if (( $(echo "$COVERAGE < 90" | bc -l) )); then
-            echo "❌ Coverage below 90% ($COVERAGE%)"
+            echo "FAIL: Coverage below 90% ($COVERAGE%)"
             exit 1
           fi
-          echo "✅ Coverage: $COVERAGE%"
+          echo "PASS: Coverage: $COVERAGE%"
 ```
 
 ## Optional: Manual Test Command
