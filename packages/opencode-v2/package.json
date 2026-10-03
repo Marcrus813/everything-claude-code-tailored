@@ -1,0 +1,40 @@
+{
+  "name": "@cocoapuffs813/ecc-universal",
+  "version": "2.2.4-opencode-v2.0",
+  "description": "ECC OpenCode V2-native plugin (temporary workaround until upstream V2 support lands)",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "ecc",
+    "plugin",
+    "opencode-v2",
+    "workaround"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "tag": "opencode-v2"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
